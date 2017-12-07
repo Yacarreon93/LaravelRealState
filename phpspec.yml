@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: LaravelRealState
+        psr4_prefix: LaravelRealState
         src_path: app
