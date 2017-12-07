@@ -23,6 +23,10 @@ Route::get('auth/logout', [
     'uses' => 'Auth\AuthController@getLogout'
 ]);
 
+Route::get('/home', ['middleware' => 'auth', function () {
+    return view('home'); }
+]);
+
 Route::get('/', function () {
     return view('welcome');
 });
