@@ -11,6 +11,18 @@
 |
 */
 
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', [
+    'middleware' => 'auth',
+    'uses' => 'Auth\AuthController@getLogout'
+]);
+
 Route::get('/', function () {
     return view('welcome');
 });
