@@ -16,7 +16,7 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        return 'Display a listing of the resource';
+        return view('owner.list');
     }
 
     /**
