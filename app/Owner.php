@@ -4,17 +4,8 @@ namespace LaravelRealState;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OwnerController extends Model
+class Owner extends Model
 {
-    /**
-     * Create a new owner controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * The database table used by the model.
