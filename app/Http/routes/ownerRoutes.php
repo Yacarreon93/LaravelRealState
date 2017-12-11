@@ -9,4 +9,4 @@
 |
 */
 
-Route::get('owners', 'OwnerController@index');
+Route::resource('owners', 'OwnerController');
