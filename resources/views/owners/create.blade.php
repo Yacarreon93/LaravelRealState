@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
+				<div class="panel-heading">New Owner</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -17,7 +17,7 @@
 							</ul>
 						</div>
 					@endif
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{ url('/owners') }}">
                         {!! csrf_field() !!}
 						<div class="form-group">
 							<label class="col-md-4 control-label">Name</label>
@@ -32,21 +32,24 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
+							<label class="col-md-4 control-label">Phone</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+								<input type="tel" class="form-control" name="phone" value="{{ old('phone') }}">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm password</label>
+							<label class="col-md-4 control-label">Address</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
+								<input type="text" class="form-control" name="address" value="{{ old('address') }}">
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
+							<div class="col-md-6 col-md-offset-4 text-right">
+								<a class="btn btn-default" href="{{ url('/owners') }}" role="button">
+                                    Cancel
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+									Create
 								</button>
 							</div>
 						</div>
