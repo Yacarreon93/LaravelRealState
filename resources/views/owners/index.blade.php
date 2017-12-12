@@ -34,7 +34,11 @@
                             <tbody>
                                 @foreach($owners as $owner)
                                     <tr>
-                                        <th scope="row">{{ $owner->id }}</th>
+                                        <th scope="row">
+                                            <a href="{{ route('owners.show', $owner->id) }}">
+                                                {{ $owner->id }}
+                                            </a>
+                                        </th>
                                         <td>{{ $owner->name }}</td>
                                         <td>{{ $owner->email }}</td>
                                         <td>{{ $owner->phone }}</td>
