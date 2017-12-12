@@ -74,7 +74,8 @@ class OwnerController extends Controller
      */
     public function edit($id)
     {
-        return view('owners.edit');
+        $owner = Owner::findOrFail($id);
+        return view('owners.edit', compact('owner'));
     }
 
     /**
@@ -86,7 +87,9 @@ class OwnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return 'Update the specified resource in storage';
+        $owner = Owner::findOrFail($id);
+        $owner->update($request->all());
+        return redirect(route('owners.show', $id));
     }
 
     /**
