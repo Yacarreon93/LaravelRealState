@@ -19,9 +19,9 @@ class CreateOwnersTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('address');
-            $table->integer('created_by')->unsigned();
+            $table->integer('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users');
-            $table->integer('updated_by')->unsigned();
+            $table->integer('updated_by')->unsigned()->nullable();
             $table->foreign('updated_by')->references('id')->on('users');
         });
     }
