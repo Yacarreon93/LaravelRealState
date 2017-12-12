@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use LaravelRealState\Http\Requests;
 use LaravelRealState\Http\Controllers\Controller;
 
+use LaravelRealState\Owner;
+
 class OwnerController extends Controller
 {
     /**
@@ -26,7 +28,8 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        return view('owners.index');
+        $owners = Owner::all();
+        return view('owners.index', compact('owners'));
     }
 
     /**
@@ -47,7 +50,8 @@ class OwnerController extends Controller
      */
     public function store(Request $request)
     {
-        return 'Store a newly created resource in storage';
+        Owner::create($request->all());
+        return redirect('/owners');
     }
 
     /**
