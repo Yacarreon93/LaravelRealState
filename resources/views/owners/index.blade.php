@@ -13,7 +13,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
                     <div class="clearfix">
-                        Owners
+                        Owners List
                         <a class="btn btn-default pull-right" href="{{ url('/owners/create') }}" role="button">
                             Create New
                         </a>
@@ -25,30 +25,22 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                @foreach($owners as $owner)
+                                    <tr>
+                                        <th scope="row">{{ $owner->id }}</th>
+                                        <td>{{ $owner->name }}</td>
+                                        <td>{{ $owner->email }}</td>
+                                        <td>{{ $owner->phone }}</td>
+                                        <td>{{ $owner->address }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
