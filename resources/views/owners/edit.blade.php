@@ -46,7 +46,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4 text-right">
-								<a class="btn btn-default" href="{{ url('/owners') }}" role="button">
+								<a class="btn btn-default" href="{{ route('owners.show', $owner->id) }}" role="button">
                                     Cancel
                                 </a>
                                 <button type="submit" class="btn btn-primary">
