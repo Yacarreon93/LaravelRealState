@@ -26,7 +26,7 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        return view('owner.list');
+        return view('owners.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class OwnerController extends Controller
      */
     public function create()
     {
-        return 'Show the form for creating a new resource';
+        return view('owners.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class OwnerController extends Controller
      */
     public function show($id)
     {
-        return 'Display the specified resource';
+        return view('owners.show');
     }
 
     /**
@@ -69,7 +69,7 @@ class OwnerController extends Controller
      */
     public function edit($id)
     {
-        return 'Show the form for editing the specified resource';
+        return view('owners.edit');
     }
 
     /**
