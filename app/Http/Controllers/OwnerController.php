@@ -100,6 +100,8 @@ class OwnerController extends Controller
      */
     public function destroy($id)
     {
-        return 'Remove the specified resource from storage';
+        $owner = Owner::findOrFail($id);
+        $owner->delete();
+        return redirect('/owners');
     }
 }
