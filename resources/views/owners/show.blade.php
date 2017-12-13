@@ -59,7 +59,7 @@
                         <div class="form-group">
 							<div class="col-md-6 col-md-offset-4 text-right">
                                 <button type="submit" class="btn btn-danger">
-									Delete
+									Send to Trash
 								</button>
 							</div>
 						</div>

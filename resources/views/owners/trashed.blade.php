@@ -25,8 +25,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
-                                    <th></th>
+                                    <th colspan="2"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,20 +38,25 @@
                                         </th>
                                         <td>{{ $owner->name }}</td>
                                         <td>{{ $owner->email }}</td>
-                                        <td>{{ $owner->phone }}</td>
                                         <td>
-                                            <a class="btn btn-default" href="{{ route('owners.restore', $owner->id) }}" role="button">
-                                                Restore
-                                            </a>
+                                            <form class="form-horizontal" role="form" method="POST" action="{{ route('owners.restore', $owner->id) }}">
+                                                {!! csrf_field() !!}
+                                                <input type="hidden" name="_method" value="PUT">
+                                                <div class="col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-default">
+                                                        Restore
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </td>
+                                        <td>
                                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/owners', $owner->id) }}">
                                                 {!! csrf_field() !!}
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <div class="form-group">
-                                                    <div class="col-md-6 col-md-offset-4 text-right">
-                                                        <button type="submit" class="btn btn-danger">
-                                                            Delete
-                                                        </button>
-                                                    </div>
+                                                <div class="col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-danger">
+                                                        Delete
+                                                    </button>
                                                 </div>
                                             </form>
                                         </td>
