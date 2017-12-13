@@ -115,4 +115,17 @@ class OwnerController extends Controller
         $owner->delete();
         return redirect('/owners');
     }
+
+    /**
+     * Restore the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $owner = Owner::withTrashed()->findOrFail($id);
+        $owner->restore();
+        return redirect('/owners');
+    }
 }

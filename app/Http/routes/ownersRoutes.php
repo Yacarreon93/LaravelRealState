@@ -9,6 +9,7 @@
 |
 */
 
-Route::get('owners/trashed', 'OwnerController@trashed');
+Route::get('owners/trashed', 'OwnerController@trashed')->name('owners.trashed');
+Route::get('owners/{owners}/restore', 'OwnerController@restore')->name('owners.restore');
 
 Route::resource('owners', 'OwnerController');

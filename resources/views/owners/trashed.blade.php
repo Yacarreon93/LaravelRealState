@@ -40,7 +40,11 @@
                                         <td>{{ $owner->name }}</td>
                                         <td>{{ $owner->email }}</td>
                                         <td>{{ $owner->phone }}</td>
-                                        <td>...</td>
+                                        <td>
+                                            <a class="btn btn-default" href="{{ route('owners.restore', $owner->id) }}" role="button">
+                                                Restore
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
