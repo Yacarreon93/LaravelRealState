@@ -104,6 +104,19 @@ class OwnerController extends Controller
     }
 
     /**
+     * Trash the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function trash($id)
+    {
+        $owner = Owner::findOrFail($id);
+        $owner->delete();
+        return redirect('/owners');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -111,8 +124,8 @@ class OwnerController extends Controller
      */
     public function destroy($id)
     {
-        $owner = Owner::findOrFail($id);
-        $owner->delete();
+        $owner = Owner::onlyTrashed()->findOrFail($id);
+        $owner->forceDelete();
         return redirect('/owners');
     }
 

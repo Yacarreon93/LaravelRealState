@@ -53,9 +53,9 @@
                             </div>
 						</div>
 					</form>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/owners', $owner->id) }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('owners.trash', $owner->id) }}">
                         {!! csrf_field() !!}
-                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
 							<div class="col-md-6 col-md-offset-4 text-right">
                                 <button type="submit" class="btn btn-danger">

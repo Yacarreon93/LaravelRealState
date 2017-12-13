@@ -44,6 +44,17 @@
                                             <a class="btn btn-default" href="{{ route('owners.restore', $owner->id) }}" role="button">
                                                 Restore
                                             </a>
+                                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/owners', $owner->id) }}">
+                                                {!! csrf_field() !!}
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <div class="form-group">
+                                                    <div class="col-md-6 col-md-offset-4 text-right">
+                                                        <button type="submit" class="btn btn-danger">
+                                                            Delete
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
