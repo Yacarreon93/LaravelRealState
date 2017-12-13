@@ -21,6 +21,9 @@
                 </div>
 				<div class="panel-body">
                     <div class="table-responsive">
+                        <div class="text-center">
+                            {!! $owners->appends(['sort' => 'name'])->render() !!}
+                        </div>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -53,4 +56,5 @@
 		</div>
 	</div>
 </div>
+<script src="{{ asset('/js/pagination.js') }}"></script>
 @endsection

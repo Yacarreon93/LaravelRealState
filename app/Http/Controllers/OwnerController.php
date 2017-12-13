@@ -28,7 +28,7 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        $owners = Owner::all();
+        $owners = Owner::paginate(10);
         return view('owners.index', compact('owners'));
     }
 
