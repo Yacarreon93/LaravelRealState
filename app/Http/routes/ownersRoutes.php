@@ -9,4 +9,6 @@
 |
 */
 
+Route::get('owners/trashed', 'OwnerController@trashed');
+
 Route::resource('owners', 'OwnerController');

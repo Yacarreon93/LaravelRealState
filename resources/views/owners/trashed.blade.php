@@ -12,17 +12,12 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-                    <div class="clearfix">
-                        Owners List
-                        <a class="btn btn-default pull-right" href="{{ url('/owners/create') }}" role="button">
-                            Create New
-                        </a>
-                    </div>
+                    Trashed Owners
                 </div>
 				<div class="panel-body">
                     <div class="table-responsive">
                         <div class="text-center">
-                            {!! $owners->appends(['sort' => 'name'])->render() !!}
+                            {!! $owners->render() !!}
                         </div>
                         <table class="table table-bordered">
                             <thead>
@@ -31,7 +26,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Address</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,7 +40,7 @@
                                         <td>{{ $owner->name }}</td>
                                         <td>{{ $owner->email }}</td>
                                         <td>{{ $owner->phone }}</td>
-                                        <td>{{ $owner->address }}</td>
+                                        <td>...</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -58,8 +53,8 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="clearfix">
-                <a class="btn btn-default pull-right" href="{{ url('/owners/trashed') }}" role="button">
-                    Trashed Owners
+                <a class="btn btn-default pull-right" href="{{ url('/owners') }}" role="button">
+                    Go Back
                 </a>
             </div>
         </div>

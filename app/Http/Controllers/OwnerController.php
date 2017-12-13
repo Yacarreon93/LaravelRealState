@@ -33,6 +33,17 @@ class OwnerController extends Controller
     }
 
     /**
+     * Display trashed elements.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $owners = Owner::onlyTrashed()->paginate(10);
+        return view('owners.trashed', compact('owners'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
