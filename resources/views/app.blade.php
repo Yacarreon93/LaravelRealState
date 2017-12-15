@@ -35,6 +35,7 @@
                     @if (Auth::check())
 					    <li><a href="{{ url('/home') }}">Home</a></li>
 					    <li><a href="{{ url('/estates') }}">Estates</a></li>
+					    <li><a href="{{ url('/owners') }}">Owners</a></li>
                     @endif
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
