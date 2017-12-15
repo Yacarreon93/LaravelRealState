@@ -61,7 +61,9 @@ class OwnerController extends Controller
      */
     public function store(Request $request)
     {
-        Owner::create($request->all());
+        $data = $request->all();
+        $data['created_by'] = $request->user()->id;
+        Owner::create($data);
         return redirect('/owners');
     }
 
@@ -98,20 +100,26 @@ class OwnerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->all();
+        $data['updated_by'] = $request->user()->id;
         $owner = Owner::findOrFail($id);
-        $owner->update($request->all());
+        $owner->update($data);
         return redirect(route('owners.show', $id));
     }
 
     /**
      * Trash the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function trash($id)
+    public function trash(Request $request, $id)
     {
+        $data = [];
+        $data['deleted_by'] = $request->user()->id;
         $owner = Owner::findOrFail($id);
+        $owner->update($data);
         $owner->delete();
         return redirect('/owners');
     }

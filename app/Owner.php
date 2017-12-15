@@ -21,7 +21,7 @@ class Owner extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'phone', 'address'];
+    protected $fillable = ['name', 'email', 'phone', 'address', 'created_by', 'updated_by', 'deleted_by'];
 
     /**
      * The attributes excluded from the model's JSON form.
