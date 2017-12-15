@@ -13,4 +13,6 @@
 
 require app_path('Http/routes/mainRoutes.php');
 require app_path('Http/routes/authRoutes.php');
+
+require app_path('Http/routes/estatesRoutes.php');
 require app_path('Http/routes/ownersRoutes.php');
