@@ -10,13 +10,13 @@ use LaravelRealState\Http\Controllers\Controller;
 class EstateController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new password controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
     /**
