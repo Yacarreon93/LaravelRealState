@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use LaravelRealState\Http\Requests;
 use LaravelRealState\Http\Controllers\Controller;
 
+use LaravelRealState\Estate;
+
 class EstateController extends Controller
 {
     /**
@@ -17,6 +19,17 @@ class EstateController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $estates = Estate::paginate(10);
+        return view('estates.index', compact('estates'));
     }
 
     /**
