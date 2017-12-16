@@ -50,7 +50,10 @@ class EstateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['created_by'] = $request->user()->id;
+        Estate::create($data);
+        return redirect('/estates');
     }
 
     /**
