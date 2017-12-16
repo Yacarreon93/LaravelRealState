@@ -39,7 +39,7 @@ class EstateController extends Controller
      */
     public function create()
     {
-        //
+        return view('estates.create');
     }
 
     /**
