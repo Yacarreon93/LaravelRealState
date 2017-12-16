@@ -76,7 +76,8 @@ class EstateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estate = Estate::findOrFail($id);
+        return view('estates.edit', compact('estate'));
     }
 
     /**
@@ -88,7 +89,11 @@ class EstateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['updated_by'] = $request->user()->id;
+        $estate = Estate::findOrFail($id);
+        $estate->update($data);
+        return redirect(route('estates.show', $id));
     }
 
     /**
