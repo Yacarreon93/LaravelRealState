@@ -134,4 +134,17 @@ class EstateController extends Controller
     {
         //
     }
+
+    /**
+     * Restore the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $estate = Estate::withTrashed()->findOrFail($id);
+        $estate->restore();
+        return redirect('/estates');
+    }
 }
