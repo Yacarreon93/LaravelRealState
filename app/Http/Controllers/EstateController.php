@@ -132,7 +132,9 @@ class EstateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $estate = Estate::onlyTrashed()->findOrFail($id);
+        $estate->forceDelete();
+        return redirect('/estates');
     }
 
     /**
