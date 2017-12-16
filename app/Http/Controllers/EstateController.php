@@ -33,6 +33,17 @@ class EstateController extends Controller
     }
 
     /**
+     * Display trashed elements.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $estates = Estate::onlyTrashed()->paginate(10);
+        return view('estates.trashed', compact('estates'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -94,6 +105,23 @@ class EstateController extends Controller
         $estate = Estate::findOrFail($id);
         $estate->update($data);
         return redirect(route('estates.show', $id));
+    }
+
+    /**
+     * Trash the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function trash(Request $request, $id)
+    {
+        $data = [];
+        $data['deleted_by'] = $request->user()->id;
+        $estate = Estate::findOrFail($id);
+        $estate->update($data);
+        $estate->delete();
+        return redirect('/estates');
     }
 
     /**
