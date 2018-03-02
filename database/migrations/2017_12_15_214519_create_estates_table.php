@@ -24,6 +24,8 @@ class CreateEstatesTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->integer('deleted_by')->unsigned()->nullable();
             $table->foreign('deleted_by')->references('id')->on('users');
+            $table->integer('fk_owner')->unsigned()->nullable();
+            $table->foreign('fk_owner')->references('id')->on('owners');
             $table->softDeletes();
         });
     }
