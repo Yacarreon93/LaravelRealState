@@ -8,6 +8,7 @@ use LaravelRealState\Http\Requests;
 use LaravelRealState\Http\Controllers\Controller;
 
 use LaravelRealState\Estate;
+use LaravelRealState\Owner;
 
 class EstateController extends Controller
 {
@@ -61,9 +62,13 @@ class EstateController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['created_by'] = $request->user()->id;
-        Estate::create($data);
+        $estate = new Estate();
+        $estate->ref = $request->ref;
+        $estate->label = $request->label;
+        $estate->address = $request->address;
+        $estate->created_by = $request->user()->id;
+        $estate->owner()->associate(Owner::findOrFail($request->fk_owner));
+        $estate->save();
         return redirect('/estates');
     }
 
