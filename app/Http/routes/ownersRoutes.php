@@ -9,6 +9,7 @@
 |
 */
 
+Route::get('owners/select', 'OwnerController@select')->name('owners.select');
 Route::get('owners/trashed', 'OwnerController@trashed')->name('owners.trashed');
 Route::put('owners/{owners}/trash', 'OwnerController@trash')->name('owners.trash');
 Route::put('owners/{owners}/restore', 'OwnerController@restore')->name('owners.restore');

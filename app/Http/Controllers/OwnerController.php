@@ -3,6 +3,7 @@
 namespace LaravelRealState\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use LaravelRealState\Http\Requests;
 use LaravelRealState\Http\Controllers\Controller;
@@ -30,6 +31,22 @@ class OwnerController extends Controller
     {
         $owners = Owner::paginate(10);
         return view('owners.index', compact('owners'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function select(Request $request)
+    {
+        $term = $request->term ?: '';
+        $owners = Owner::where('name', 'like', '%'.$term.'%')->lists('name', 'id');
+        $owners_options = [];
+        foreach ($owners as $id => $name) {
+            $owners_options[] = ['id' => $id, 'text' => $name];
+        }
+        return \Response::json($owners_options);
     }
 
     /**

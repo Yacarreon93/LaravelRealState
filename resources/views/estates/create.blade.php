@@ -38,6 +38,12 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-md-4 control-label">Owner</label>
+							<div class="col-md-6">
+                                <select name="fk_owner" class="form-control"></select>
+							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4 text-right">
 								<a class="btn btn-default" href="{{ url('/estates') }}" role="button">
                                     Cancel
@@ -53,4 +59,29 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select[name="fk_owner"]').select2({
+            theme: 'bootstrap',
+            ajax: {
+                dataType: 'json',
+                url: '{{ url("/owners/select") }}',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        term: params.term
+                    }
+                },
+                processResults: function (data) {
+                    return {
+                        results: data
+                    }
+                }
+            }
+        })
+    })
+</script>
 @endsection
