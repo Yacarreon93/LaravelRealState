@@ -36,4 +36,12 @@ class Owner extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get the estates attached to the owner.
+     */
+    public function estates()
+    {
+        return $this->hasMany('LaravelRealState\Estate', 'fk_estate');
+    }
 }
