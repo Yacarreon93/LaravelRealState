@@ -10,6 +10,8 @@ use LaravelRealState\Http\Controllers\Controller;
 
 use LaravelRealState\Owner;
 
+use Input;
+
 class OwnerController extends Controller
 {
     /**
@@ -34,16 +36,20 @@ class OwnerController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return owners in json format.
      *
      * @return \Illuminate\Http\Response
      */
-    public function select(Request $request)
+    public function getSelectOptions(Request $request)
     {
-        $term = $request->term ?: '';
-        $owners = Owner::where('name', 'like', '%'.$term.'%')->lists('name', 'id');
+        $id = Input::get('id') ?: 0;
+        $term = Input::get('term') ?: '';
+        if ($id) $owners = Owner::where('id', $id);
+        else if ($term) $owners = Owner::where('name', 'like', '%'.$term.'%');
+        else $owners = Owner::all();
+        $owners_list = $owners->lists('name', 'id');
         $owners_options = [];
-        foreach ($owners as $id => $name) {
+        foreach ($owners_list as $id => $name) {
             $owners_options[] = ['id' => $id, 'text' => $name];
         }
         return \Response::json($owners_options);
