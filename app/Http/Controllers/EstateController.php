@@ -105,10 +105,15 @@ class EstateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $data['updated_by'] = $request->user()->id;
         $estate = Estate::findOrFail($id);
-        $estate->update($data);
+        $estate->ref = $request->ref;
+        $estate->label = $request->label;
+        $estate->address = $request->address;
+        $estate->updated_by = $request->user()->id;
+        if ($request->fk_owner) {
+            $estate->owner()->associate(Owner::findOrFail($request->fk_owner));
+        }
+        $estate->save();
         return redirect(route('estates.show', $id));
     }
 
