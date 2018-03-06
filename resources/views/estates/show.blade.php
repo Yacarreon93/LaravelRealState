@@ -36,6 +36,14 @@
                                 <input type="text" class="form-control" name="address" value="{{ $estate->address }}" disabled>
                             </div>
                         </div>
+                        @if ($estate->owner)
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Owner</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="owner" value="{{ $estate->owner->name }}" disabled>
+                            </div>
+                        </div>
+                        @endif
 						<div class="form-group">
                             <div class="col-md-6 col-md-offset-4 text-right">
                                 <a class="btn btn-default" href="{{ url('/estates') }}" role="button">

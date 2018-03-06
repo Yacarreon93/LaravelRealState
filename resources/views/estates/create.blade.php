@@ -63,12 +63,12 @@
 
 @section('scripts')
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('select[name="fk_owner"]').select2({
             theme: 'bootstrap',
             ajax: {
                 dataType: 'json',
-                url: '{{ url("/owners/select") }}',
+                url: '{{ url("/owners/getSelectOptions") }}',
                 delay: 250,
                 data: function(params) {
                     return {

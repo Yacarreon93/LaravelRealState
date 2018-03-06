@@ -38,6 +38,14 @@
 								<input type="text" class="form-control" name="address" value="{{ $estate->address }}">
 							</div>
 						</div>
+                        @if ($estate->owner)
+						<div class="form-group">
+							<label class="col-md-4 control-label">Owner</label>
+							<div class="col-md-6">
+                                <select name="fk_owner" class="form-control"></select>
+							</div>
+						</div>
+                        @endif
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4 text-right">
 								<a class="btn btn-default" href="{{ route('estates.show', $estate->id) }}" role="button">
@@ -54,4 +62,47 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+        var ownerSelect = $('select[name="fk_owner"]')
+        ownerSelect.select2({
+            theme: 'bootstrap',
+            ajax: {
+                dataType: 'json',
+                url: '{{ url("/owners/getSelectOptions") }}',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        term: params.term
+                    }
+                },
+                processResults: function (data) {
+                    return {
+                        results: data
+                    }
+                }
+            }
+        })
+        @if ($estate->owner && $estate->owner->id > 0)
+        var option = $('<option selected>Loading...</option>').val({{ $estate->owner->id }})
+        ownerSelect.append(option).trigger('change')
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: '{{ url("/owners/getSelectOptions") }}',
+            data: { id: {{ $estate->owner->id }} }
+        }).then(function (data) {
+            var owner = data && data[0]
+            if (owner) {
+                option.text(owner.text).val(owner.id);
+                option.removeData();
+                ownerSelect.trigger('change');
+            }
+        });
+        @endif;
+    })
+</script>
 @endsection
