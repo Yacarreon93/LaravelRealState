@@ -31,7 +31,7 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        $owners = Owner::paginate(10);
+        $owners = Owner::orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(10);
         return view('owners.index', compact('owners'));
     }
 
