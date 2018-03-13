@@ -21,7 +21,7 @@ class Estate extends Model
      *
      * @var array
      */
-    protected $fillable = ['ref', 'label', 'address', 'created_by', 'updated_by', 'deleted_by'];
+    protected $fillable = ['ref', 'type', 'label', 'status', 'zone', 'address', 'colony', 'zip', 'price', 'created_by', 'updated_by', 'deleted_by'];
 
     /**
      * The attributes excluded from the model's JSON form.

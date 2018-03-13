@@ -16,8 +16,14 @@ class CreateEstatesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('ref');
+            $table->string('type');
             $table->string('label');
+            $table->string('status');
+            $table->string('zone');
             $table->string('address');
+            $table->string('colony');
+            $table->string('zip');
+            $table->float('price');
             $table->integer('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->integer('updated_by')->unsigned()->nullable();
