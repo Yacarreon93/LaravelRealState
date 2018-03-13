@@ -29,7 +29,7 @@ class EstateController extends Controller
      */
     public function index()
     {
-        $estates = Estate::paginate(10);
+        $estates = Estate::orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(10);
         return view('estates.index', compact('estates'));
     }
 
