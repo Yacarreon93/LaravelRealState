@@ -2,6 +2,7 @@
 
 namespace LaravelRealState\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 use LaravelRealState\Http\Requests;
@@ -39,9 +40,20 @@ class EstateController extends Controller
      * @param  string  $type
      * @return \Illuminate\Http\Response
      */
-    public function filter($type)
+    public function filter($type_name)
     {
-        $estates = Estate::where('type', $type)->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(10);
+        switch ($type_name) {
+            case 'houses':
+                $type_name = 'house';
+                break;
+            case 'departments':
+                $type_name = 'department';
+                break;
+            default:
+                return view('errors.404');
+        }
+        $type_id = DB::table('estates_types')->where('name', $type_name)->select('id')->take(1)->get()[0]->id;
+        $estates = Estate::where('type', $type_id)->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(10);
         return view('estates.index', compact('estates'));
     }
 
