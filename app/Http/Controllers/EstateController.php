@@ -34,6 +34,18 @@ class EstateController extends Controller
     }
 
     /**
+     * Display a listing of the resource filtered by type.
+     *
+     * @param  string  $type
+     * @return \Illuminate\Http\Response
+     */
+    public function filter($type)
+    {
+        $estates = Estate::where('type', $type)->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(10);
+        return view('estates.index', compact('estates'));
+    }
+
+    /**
      * Display trashed elements.
      *
      * @return \Illuminate\Http\Response
