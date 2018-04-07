@@ -12,6 +12,6 @@ Route::get('estates/trashed', 'EstateController@trashed')->name('estates.trashed
 Route::put('estates/{id}/trash', 'EstateController@trash')->name('estates.trash');
 Route::put('estates/{id}/restore', 'EstateController@restore')->name('estates.restore');
 
-Route::get('estates/{type}', 'EstateController@filter')->name('estates.filter');
+Route::get('estates/{type_name}', 'EstateController@filter')->name('estates.filter');
 
 Route::resource('estates', 'EstateController');

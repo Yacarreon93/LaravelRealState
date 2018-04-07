@@ -13,7 +13,7 @@ class DictionariesTablesSeeder extends Seeder
     {
         $types = [
             'house',
-            'departments'
+            'department'
         ];
         for ($i = 0; $i < count($types); $i++) {
             DB::table('estates_types')->insert([
