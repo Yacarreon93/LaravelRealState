@@ -22,7 +22,7 @@ class EstatesTableSeeder extends Seeder
         for ($i = 0; $i < self::$num; $i++) {
             Estate::create([
                 'ref' => str_random(10),
-                'type' => str_random(10),
+                'type' => $faker->randomElement(DB::table('estates_types')->lists('id')),
                 'label' => str_random(10),
                 'status' => str_random(10),
                 'zone' => str_random(10),
