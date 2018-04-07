@@ -38,7 +38,21 @@
 				<ul class="nav navbar-nav">
                     @if (Auth::check())
 					    <li><a href="{{ url('/home') }}">Home</a></li>
-					    <li><a href="{{ url('/estates') }}">Estates</a></li>
+                        <li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Estates <span class="caret"></span>
+                            </a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('/estates/create') }}">Create New</a></li>
+                                <li role="separator" class="divider"></li>
+								<li class="dropdown-header">List</li>
+                                <li role="separator" class="divider"></li>
+								<li><a href="{{ url('/estates') }}">All</a></li>
+								<li><a href="{{ url('/estates/houses') }}">Houses</a></li>
+								<li><a href="{{ url('/estates/departments') }}">Departments</a></li>
+							</ul>
+						</li>
+					    <!-- <li><a href="{{ url('/estates') }}">Estates</a></li> -->
 					    <li><a href="{{ url('/owners') }}">Owners</a></li>
                     @endif
 				</ul>
