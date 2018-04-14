@@ -1,5 +1,8 @@
-ul.pagination li:not(.show-mobile) {
+ul.pagination {
+  margin: 0px 0px 10px 0px;
+  li:not(.show-mobile) {
     @media (max-width: 560px) {
-        display: none;
+      display: none;
     }
+  }
 }
