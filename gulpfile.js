@@ -13,4 +13,9 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss');
+    mix.styles([
+        'roboto.css',
+        'select2.min.css',
+        'select2-bootstrap.min.css'
+    ]);
 });
