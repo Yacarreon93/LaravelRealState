@@ -13,7 +13,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
                     <div class="clearfix">
-                        Estates List
+                        {{ isset($type_name) ? ucfirst($type_name) : 'Estates' }} List ({{ $estates->total() }})
                         <a class="btn btn-default pull-right" href="{{ url('/estates/create') }}" role="button">
                             Create New
                         </a>
