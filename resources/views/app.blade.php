@@ -48,8 +48,8 @@
 								<li class="dropdown-header">List</li>
                                 <li role="separator" class="divider"></li>
 								<li><a href="{{ url('/estates') }}">All</a></li>
-								<li><a href="{{ url('/estates/houses') }}">Houses</a></li>
-								<li><a href="{{ url('/estates/departments') }}">Departments</a></li>
+								<li><a href="{{ url('/estates/filter/houses') }}">Houses</a></li>
+								<li><a href="{{ url('/estates/filter/departments') }}">Departments</a></li>
 							</ul>
 						</li>
 					    <!-- <li><a href="{{ url('/estates') }}">Estates</a></li> -->

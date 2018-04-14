@@ -37,7 +37,7 @@ class EstateController extends Controller
     /**
      * Display a listing of the resource filtered by type.
      *
-     * @param  string  $type
+     * @param  string  $type_name
      * @return \Illuminate\Http\Response
      */
     public function filter($type_name)
