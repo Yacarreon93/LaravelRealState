@@ -58,6 +58,25 @@ class EstateController extends Controller
     }
 
     /**
+     * Display a listing of the resource filtered by type.
+     *
+     * @param  string  $type_name
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $ref = isset($request->ref) ? $request->ref : '';
+        $label = isset($request->label) ? $request->label : '';
+        $address = isset($request->address) ? $request->address : '';
+        $estates = Estate::whereRaw('1 = 1');
+        if ($ref) $estates = $estates-where('ref', 'like', "%$ref%");
+        if ($label) $estates = $estates->where('label', 'like', "%$label%");
+        if ($address) $estates = $estates->where('address', 'like', "%$address%");
+        $estates = $estates->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(10);
+        return response()->json($estates);
+    }
+
+    /**
      * Display trashed elements.
      *
      * @return \Illuminate\Http\Response
