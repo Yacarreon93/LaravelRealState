@@ -32,8 +32,14 @@
                                     <th>Label</th>
                                     <th>Address</th>
                                 </tr>
+                                <tr>
+                                    <th></th>
+                                    <th><input type="text" class="form-control" name="search_ref"></input></th>
+                                    <th><input type="text" class="form-control" name="search_label"></input></th>
+                                    <th><input type="text" class="form-control" name="search_address"></input></th>
+                                </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="estates-list">
                                 @foreach($estates as $estate)
                                     <tr>
                                         <th scope="row">
@@ -64,4 +70,5 @@
     </div>
 </div>
 <script src="{{ asset('/js/pagination.js') }}"></script>
+<script src="{{ asset('/js/searchEstate.js') }}"></script>
 @endsection
