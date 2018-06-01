@@ -13,7 +13,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
                     <div class="clearfix">
-                        {{ isset($type_name) ? ucfirst($type_name) : 'Estates' }} List ({{ $estates->total() }})
+                        <span id="section-title">{{ isset($type_name) ? ucfirst($type_name) : 'Estates' }} List ({{ $estates->total() }})</span>
                         <a class="btn btn-default pull-right" href="{{ url('/estates/create') }}" role="button">
                             Create New
                         </a>
@@ -21,7 +21,7 @@
                 </div>
 				<div class="panel-body">
                     <div class="table-responsive">
-                        <div class="text-center">
+                        <div id="pagination" class="text-center">
                             {!! $estates->render() !!}
                         </div>
                         <table class="table table-bordered">
